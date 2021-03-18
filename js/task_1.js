@@ -10,9 +10,7 @@ const colors = [
   '#795548',
 ];
 
-const randomIntegerFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+
 
 const generateRandomColor = {
   isActive: false,
@@ -22,11 +20,13 @@ const generateRandomColor = {
       return;
     }
     this.isActive = true;
-    this.intervalId = setInterval(() => {
-      document.body.style = `background-color: ${
-        colors[randomIntegerFromInterval(0, colors.length - 1)]
-      };`;
-    }, 1000);
+    this.intervalId = setInterval(function () {
+                 const randomIntegerFromInterval = (min, max) => {
+                     return Math.floor(Math.random() * (max - min + 1) + min);
+                 };
+                 let selectedcolor = colors[randomIntegerFromInterval(0, colors.length - 1)];
+                 document.body.style.background = selectedcolor
+             }, 1000);
   },
   stop() {
     clearInterval(this.intervalId);
@@ -43,3 +43,9 @@ stopBtnRef.addEventListener(
   'click',
   generateRandomColor.stop.bind(generateRandomColor),
 );
+
+// startBtnRef.addEventListener('click', changeBackground.start.bind(changeBackground));
+// stopBtnRef.addEventListener('click', changeBackground.stop.bind(changeBackground));
+ 
+
+console.log(generateRandomColor);
