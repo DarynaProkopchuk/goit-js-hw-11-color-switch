@@ -35,6 +35,15 @@ const generateRandomColor = {
   },
 };
 
+startBtnRef.addEventListener("click", () => {
+stopBtnRef.removeAttribute("disabled");
+startBtnRef.setAttribute("disabled", true);
+});
+stopBtnRef.addEventListener("click", () => {
+  startBtnRef.removeAttribute("disabled");
+  stopBtnRef.setAttribute("disabled", true);
+});
+
 startBtnRef.addEventListener(
   'click',
   generateRandomColor.start.bind(generateRandomColor),
@@ -43,9 +52,5 @@ stopBtnRef.addEventListener(
   'click',
   generateRandomColor.stop.bind(generateRandomColor),
 );
-
-// startBtnRef.addEventListener('click', changeBackground.start.bind(changeBackground));
-// stopBtnRef.addEventListener('click', changeBackground.stop.bind(changeBackground));
- 
 
 console.log(generateRandomColor);
